@@ -8,7 +8,7 @@ const App = () => {
   const [customTask, setCustomTask] = useState('');
 
   const addTask = () => {
-    setTasks((prevTasks) => [...prevTasks, 'New todo']);
+    setTasks((prevTasks) => [...prevTasks, `Todo ${prevTasks.length}`]);
   };
 
   const incrementCounter = () => {
@@ -38,7 +38,7 @@ const App = () => {
           value={customTask}
           onChange={handleCustomTaskChange}
         />
-        <button id="submit-custom-task" onClick={handleCustomTaskSubmit}>Submit</button>
+        <button id="skill-btn" onClick={handleCustomTaskSubmit}>Add Skill</button>
       </div>
       <UseMemo tasks={tasks} />
       <ReactMemo counter={counter} />
