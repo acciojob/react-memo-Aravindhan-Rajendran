@@ -1,18 +1,13 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 
-const UseMemo = ({ tasks }) => {
-  const memoizedTasks = useMemo(() => tasks, [tasks]);
-
+const ReactMemo = React.memo(({ counter }) => {
+  console.log('ReactMemo re-rendered');
+  
   return (
     <div>
-      <h2>Tasks List</h2>
-      <ul id="task-list">
-        {memoizedTasks.map((task, index) => (
-          <li key={index}>{task}</li>
-        ))}
-      </ul>
+      <h2>Counter: {counter}</h2>
     </div>
   );
-};
+});
 
-export default UseMemo;
+export default ReactMemo;
