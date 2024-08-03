@@ -27,17 +27,18 @@ const App = () => {
   };
 
   return (
-    <div>
+    <div id="main">
       <h1>Task Manager</h1>
-      <button onClick={addTask}>Add Todo</button>
-      <button onClick={incrementCounter}>Increment Counter</button>
+      <button id="add-todo-btn" onClick={addTask}>Add Todo</button>
+      <button id="incr-cnt" onClick={incrementCounter}>Increment Counter</button>
       <div>
         <input
+          id="skill-input"
           type="text"
           value={customTask}
           onChange={handleCustomTaskChange}
         />
-        <button onClick={handleCustomTaskSubmit}>Submit</button>
+        <button id="submit-custom-task" onClick={handleCustomTaskSubmit}>Submit</button>
       </div>
       <UseMemo tasks={tasks} />
       <ReactMemo counter={counter} />
