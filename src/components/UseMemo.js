@@ -8,7 +8,7 @@ const UseMemo = ({ tasks }) => {
       <h2>Tasks List</h2>
       <ul id="task-list">
         {memoizedTasks.map((task, index) => (
-          <li key={index}>{task}</li>
+          <li key={index} id={`todo-${index}`}>{task}</li>
         ))}
       </ul>
     </div>
