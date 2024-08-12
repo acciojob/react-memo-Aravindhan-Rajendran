@@ -29,16 +29,16 @@ const App = () => {
   return (
     <div id="main">
       <h1>Task Manager</h1>
-      <button id="add-todo-btn" onClick={addTask}>Add Todo</button>
-      <button id="incr-cnt" onClick={incrementCounter}>Increment Counter</button>
-      <div>
-        <input
-          id="skill-input"
-          type="text"
-          value={customTask}
-          onChange={handleCustomTaskChange}
-        />
-        <button id="skill-btn" onClick={handleCustomTaskSubmit}>Add Skill</button>
+<button id="add-todo-btn" onClick={addTask}>Add Todo</button>
+<button id="incr-cnt" onClick={incrementCounter}>Increment Counter</button>
+    <div>
+<input
+  id="skill-input"
+  type="text"
+  value={customTask}
+  onChange={handleCustomTaskChange}
+/>
+<button id="skill-btn" onClick={handleCustomTaskSubmit}>Add Skill</button>
       </div>
       <UseMemo tasks={tasks} />
       <ReactMemo counter={counter} />
