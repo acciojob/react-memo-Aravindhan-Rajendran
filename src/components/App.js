@@ -31,7 +31,7 @@ const App = () => {
   return (
     <div id="main">
       <h1>Task Manager</h1>
-      <button id="add-todo-btn" onClick={addTask}>Add Todo</button>
+      <button id="todo-0" onClick={addTask}>Add Todo</button>
       <button id="incr-cnt" onClick={incrementCounter}>Increment Counter: {counter}</button>
       <div>
         <input
