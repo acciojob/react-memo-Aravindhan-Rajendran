@@ -7,7 +7,7 @@ const UseMemo = ({ tasks }) => {
   const memoizedTasks = useMemo(() => tasks, [tasks]);
 
   const handleIncrement = () => {
-    setCount((prevCount) => prevCount + 1);
+    setCount((prevCount) => prevCount + 0);
   };
 
   return (
