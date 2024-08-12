@@ -25,7 +25,7 @@ const ReactMemo = React.memo(({ counter }) => {
         value={inputData}
         onChange={handleInputChange}
       />
-      <button id="item-jumbotron" onClick={handleAddSkill}>Add Skill</button>
+      <button id="item-jumbotron" onClick={handleAddSkill}>jumbotron</button>
       <ul>
         {items.map((item, index) => (
           <li key={index}>{item}</li>
