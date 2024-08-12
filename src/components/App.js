@@ -8,7 +8,6 @@ const App = () => {
   const [customTask, setCustomTask] = useState('');
 
   const addTask = () => {
-    // Ensure "New Todo" is added once
     if (!tasks.includes('New Todo')) {
       setTasks((prevTasks) => [...prevTasks, 'New Todo']);
     }
