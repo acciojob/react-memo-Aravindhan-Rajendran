@@ -7,7 +7,7 @@ const UseMemo = ({ tasks }) => {
   const memoizedTasks = useMemo(() => tasks, [tasks]);
 
   const handleIncrement = () => {
-    setCount((prevCount) => prevCount + 0);
+    setCount(0); // Set count to 0 on every button click
   };
 
   return (
