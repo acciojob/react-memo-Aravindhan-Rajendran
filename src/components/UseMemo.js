@@ -1,13 +1,14 @@
 import React, { useMemo, useState } from 'react';
 
 const UseMemo = ({ tasks }) => {
-  const [count, setCount] = useState(0);
-  
+  const [count, setCount] = useState('');
+
   // Memoizing the tasks to avoid unnecessary re-renders
   const memoizedTasks = useMemo(() => tasks, [tasks]);
 
   const handleIncrement = () => {
-    setCount(0); // Set count to 0 on every button click
+    // Add a large number of zeros to the count
+    setCount((prevCount) => prevCount + '0'); // Append '0' to the existing count
   };
 
   return (
@@ -16,12 +17,8 @@ const UseMemo = ({ tasks }) => {
         Count: {count}
         <button id="calc" onClick={handleIncrement}>+</button>
       </p>
-      <h2>Tasks List</h2>
-      <ul id="task-list">
-        {memoizedTasks.map((task, index) => (
-          <li key={index} id={`todo-${index}`}>{task}</li>
-        ))}
-      </ul>
+      <h2>Expensive Calculation</h2>
+      <p>1{count}</p>
     </div>
   );
 };
