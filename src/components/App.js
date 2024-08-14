@@ -15,7 +15,9 @@ const App = () => {
 
   // Increment the counter
   const incrementCounter = () => {
+    console.log('Counter before increment:', counter); // Debugging log
     setCounter((prevCounter) => prevCounter + 1);
+    console.log('Counter after increment:', counter + 1); // Debugging log
   };
 
   // Handle custom task input change
