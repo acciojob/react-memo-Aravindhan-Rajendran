@@ -7,48 +7,68 @@ const App = () => {
   const [counter, setCounter] = useState(0);
   const [customTask, setCustomTask] = useState('');
 
+  // Add a new task "New Todo"
   const addTask = () => {
-    // Allow "New Todo" to be added multiple times
-    setTasks((prevTasks) => [...prevTasks, 'New Todo']);
+    const newTask = `New Todo ${tasks.length + 1}`; // Ensure unique task names
+    setTasks((prevTasks) => [...prevTasks, newTask]);
   };
 
+  // Increment the counter
   const incrementCounter = () => {
     setCounter((prevCounter) => prevCounter + 1);
   };
 
+  // Handle custom task input change
   const handleCustomTaskChange = (e) => {
     setCustomTask(e.target.value);
   };
 
+  // Add a custom task if the input length is greater than 5
   const handleCustomTaskSubmit = () => {
     if (customTask.length > 5) {
       setTasks((prevTasks) => [...prevTasks, customTask]);
       setCustomTask('');
+    } else {
+      alert('Task should be more than 5 characters!');
     }
   };
 
   return (
     <div id="main">
       <h1>Task Manager</h1>
-      <button id="add-todo-btn" onClick={addTask}>Add Todo</button>
-      <button id="incr-cnt" onClick={incrementCounter}>Increment Counter: {counter}</button>
+
+      {/* Button to add "New Todo" */}
+      <button id="add-todo-btn" onClick={addTask}>
+        Add Todo
+      </button>
+
+      {/* Button to increment counter */}
+      <button id="incr-cnt" onClick={incrementCounter}>
+        Increment Counter: {counter}
+      </button>
+
+      {/* Input for custom tasks */}
       <div>
         <input
           id="skill-input"
           type="text"
           value={customTask}
           onChange={handleCustomTaskChange}
+          placeholder="Enter a custom task"
         />
-        <button id="skill-btn" onClick={handleCustomTaskSubmit}>Add Skill</button>
+        <button id="skill-btn" onClick={handleCustomTaskSubmit}>
+          Add Skill
+        </button>
       </div>
 
       {/* Display the list of tasks */}
       <ul>
         {tasks.map((task, index) => (
-          <li key={index}>{task}</li>
+          <li key={index} id={`todo-${index}`}>{task}</li>
         ))}
       </ul>
 
+      {/* Rendering UseMemo and ReactMemo components */}
       <UseMemo tasks={tasks} />
       <ReactMemo counter={counter} />
     </div>
