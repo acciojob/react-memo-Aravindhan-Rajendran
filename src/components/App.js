@@ -8,9 +8,8 @@ const App = () => {
   const [customTask, setCustomTask] = useState('');
 
   const addTask = () => {
-    if (!tasks.includes('New Todo')) {
-      setTasks((prevTasks) => [...prevTasks, 'New Todo']);
-    }
+    // Allow "New Todo" to be added multiple times
+    setTasks((prevTasks) => [...prevTasks, 'New Todo']);
   };
 
   const incrementCounter = () => {
@@ -31,7 +30,7 @@ const App = () => {
   return (
     <div id="main">
       <h1>Task Manager</h1>
-      <button id="#add-todo-btn" onClick={addTask}>Add Todo</button>
+      <button id="add-todo-btn" onClick={addTask}>Add Todo</button>
       <button id="incr-cnt" onClick={incrementCounter}>Increment Counter: {counter}</button>
       <div>
         <input
@@ -42,6 +41,14 @@ const App = () => {
         />
         <button id="skill-btn" onClick={handleCustomTaskSubmit}>Add Skill</button>
       </div>
+
+      {/* Display the list of tasks */}
+      <ul>
+        {tasks.map((task, index) => (
+          <li key={index}>{task}</li>
+        ))}
+      </ul>
+
       <UseMemo tasks={tasks} />
       <ReactMemo counter={counter} />
     </div>
