@@ -1,38 +1,45 @@
-import React, { useState, useCallback } from 'react';
-
-const ReactMemo = React.memo(({ counter }) => {
-  console.log('ReactMemo re-rendered');
-  
-  const [inputData, setInputData] = useState('');
-  const [items, setItems] = useState([]);
-
-  const handleInputChange = (e) => {
-    setInputData(e.target.value);
+import React, { useEffect, useState } from "react";
+ 
+const ReactMemo = React.memo(() => {
+  console.log("ReactMemo rendered");
+  const [tasks, setTasks] = useState([]);
+  const [task, setTask] = useState("");
+ 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setTasks((prev) => [...prev, task]);
+    setTask("");
   };
-
-  const handleAddSkill = () => {
-    if (inputData.trim()) {
-      setItems((prevItems) => [...prevItems, inputData]);
-      setInputData(''); // Clear input after adding
-    }
-  };
-
+ 
   return (
     <div>
-      <h2>React.memo</h2>
-      <input 
-        type="text" 
-        value={inputData}
-        onChange={handleInputChange}
-      />
-      <button id="item-jumbotron" onClick={handleAddSkill}>jumbotron</button>
+      <h1>React.memo</h1>
+      <form onSubmit={handleSubmit}>
+        <input
+          id="skill-input"
+          type="text"
+          value={task}
+          onChange={(e) => setTask(e.target.value)}
+          required
+          minLength="5"
+        />
+        <button
+          id="skill-btn"
+          type="submit"
+          // onClick={() => setTasks((prev) => [...prev, task])}
+        >
+          Add Skill
+        </button>
+      </form>
       <ul>
-        {items.map((item, index) => (
-          <li key={index}>{item}</li>
+        {tasks.map((task, index) => (
+          <li key={index} id={`item-${task}`}>
+            {task}
+          </li>
         ))}
       </ul>
     </div>
   );
 });
-
+ 
 export default ReactMemo;

@@ -1,25 +1,35 @@
-import React, { useMemo, useState } from 'react';
-
-const UseMemo = ({ tasks }) => {
-  const [count, setCount] = useState('');
-
-  // Memoizing the tasks to avoid unnecessary re-renders
-  const memoizedTasks = useMemo(() => tasks, [tasks]);
-
-  const handleIncrement = () => {
-    setCount((prevCount) => prevCount + '0'); // Append "0" to the current count
+import React, { useMemo, useState } from "react";
+ 
+function UseMemo() {
+  console.log("UseMemo rendered");
+  const [count, setCount] = useState(0);
+ 
+  const expensiveFunction = () => {
+    console.log("Expensive Function Called");
+    let sum = 0;
+    for (let i = 0; i < 1000000000; i++) {
+      sum++;
+    }
+    return sum;
   };
-
+ 
+  const expensiveCalculation = useMemo(() => {
+    return expensiveFunction() + count;
+  }, [count]);
+ 
   return (
     <div>
       <p>
-        Count: {count}
-        <button id="calc" onClick={handleIncrement}>+</button>
+        Count: <span id="incr-cnt">{count}</span>{" "}
+        <button id="incr-btn" onClick={() => setCount((prev) => prev + 1)}>
+          +
+        </button>
       </p>
-      <h2>Expensive Calculation</h2>
-      <p>1{count}</p> {/* This will display "1" followed by the current count (e.g., "100", "1000", etc.) */}
+ 
+      <h1>Expensive Calculation</h1>
+      <p id="calc">{expensiveCalculation}</p>
     </div>
   );
-};
-
+}
+ 
 export default UseMemo;
